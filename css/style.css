@@ -1,13 +1,14 @@
 /* Jay Arbuda Fertilisers — mobile-first, no framework. Budget: <200KB CSS/JS total.
    Palette (measured contrast, WCAG AA):
    - Borders --line #6B8F71 = 3.6:1 on white (passes 1.4.11 non-text 3:1; old #dfe8df was 1.25:1 — invisible).
-   - Text --green #1B5E20 = 7.9:1, --green-dark #124116 = 11.7:1, --muted #5c6b5e = 5.6:1 (pass 4.5:1 body).
-   - CTA yellow #F9A825 only with near-black text (~9:1); never yellow-on-white (1.97:1 fail).
-   - 2px component borders for sunlight readability (outdoor-use guidance). */
+   - Dark-pastel v2: sage page #E7EEE3 lifts white cards; crisp border #3F6B45 = 6.2:1 white / 5.3:1 sage.
+   - Text --green #1E5B27 = 8.1:1, --green-dark #124116 = 11.7:1, --muted #55665a ≈ 6:1 (pass 4.5:1 body).
+   - CTA yellow #F9A825 only with near-black text (~9:1); WhatsApp deep-pastel #157A3E with white (5.4:1).
+   - All buttons share geometry (52px, 2px tonal borders); 2px component borders for sunlight readability. */
 :root{
-  --green:#1B5E20; --green-dark:#124116; --yellow:#F9A825; --yellow-soft:#FFF8E1;
-  --yellow-edge:#8A6700; --brown:#5D4037; --bg:#F6F9F4; --card:#ffffff; --ink:#1e2a1f; --muted:#5c6b5e;
-  --line:#6B8F71; --line-soft:#C9DCCB; --radius:14px; --max:1100px; --shadow:0 8px 28px rgba(18,65,22,.16);
+  --green:#1E5B27; --green-dark:#124116; --wa:#157A3E; --wa-dark:#0B4D26; --yellow:#F9A825; --yellow-soft:#FFF6DE;
+  --yellow-edge:#8A6700; --brown:#5D4037; --bg:#E7EEE3; --card:#ffffff; --ink:#1e2a1f; --muted:#55665a;
+  --line:#3F6B45; --line-soft:#C9DCCB; --radius:14px; --max:1100px; --shadow:0 10px 30px rgba(15,58,23,.18);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -29,7 +30,7 @@ a{color:var(--green)} a:hover{color:var(--green-dark)}
 .site-nav a{display:block;padding:14px 18px;text-decoration:none;color:var(--ink);font-weight:600;border-bottom:1px solid var(--line-soft)}
 .site-nav a.active,.site-nav a:hover{background:var(--yellow-soft)}
 .header-cta{display:none}
-.header-call{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff!important;text-decoration:none;font-weight:800;padding:10px 14px;border-radius:999px;white-space:nowrap}
+.header-call{display:inline-flex;align-items:center;gap:6px;background:var(--green);border:2px solid var(--green-dark);color:#fff!important;text-decoration:none;font-weight:800;padding:11px 18px;min-height:48px;border-radius:999px;white-space:nowrap}
 /* Hero */
 .hero{position:relative;color:#fff;background:var(--green-dark)}
 .hero img.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:0;opacity:.9}
@@ -38,10 +39,10 @@ a{color:var(--green)} a:hover{color:var(--green-dark)}
 .badge{display:inline-block;background:var(--yellow);color:#3a2a00;font-weight:800;border-radius:999px;padding:6px 12px;font-size:14px;margin-bottom:12px}
 .hero h1{font-size:1.9rem;line-height:1.2;margin:.2em 0}
 .hero p.lead{font-size:1.08rem;max-width:36em}
-.btn{display:inline-block;border-radius:999px;padding:13px 20px;font-weight:800;text-decoration:none;min-height:48px}
-.btn-call{background:var(--yellow);color:#2b1d00}
-.btn-wa{background:#25D366;color:#06330f}
-.btn-ghost{background:#fff;color:var(--green);border:2px solid var(--green)}
+.btn{display:inline-block;border:2px solid transparent;border-radius:999px;padding:14px 22px;font-weight:800;font-size:1.02rem;line-height:1.4;text-decoration:none;min-height:52px}
+.btn-call{background:var(--yellow);border-color:var(--yellow-edge);color:#2b1d00}
+.btn-wa{background:var(--wa);border-color:var(--wa-dark);color:#fff}
+.btn-ghost{background:#fff;border-color:var(--green);color:var(--green)}
 .btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
 /* Sections/cards */
 .section{padding:36px 0}
@@ -75,9 +76,10 @@ footer a{color:#ffe9a8}
 footer h3{color:#fff;margin:.2em 0}
 /* Sticky mobile bar */
 .sticky-bar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:grid;grid-template-columns:1fr 1fr 1fr;background:#fff;border-top:2px solid var(--green-dark);box-shadow:0 -6px 20px rgba(0,0,0,.12)}
-.sticky-bar a{display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 6px;font-weight:800;text-decoration:none;min-height:56px}
+.sticky-bar a{display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 6px;font-weight:800;font-size:1rem;text-decoration:none;min-height:56px}
+.sticky-bar a+a{border-left:2px solid rgba(0,0,0,.15)}
 .sticky-bar .s-call{background:var(--yellow);color:#2b1d00}
-.sticky-bar .s-wa{background:#25D366;color:#06330f}
+.sticky-bar .s-wa{background:var(--wa);color:#fff}
 .sticky-bar .s-dir{background:var(--green);color:#fff}
 /* Blog */
 .post-body{background:#fff;border:2px solid var(--line);border-radius:var(--radius);padding:20px}
